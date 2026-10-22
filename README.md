@@ -41,6 +41,24 @@ https://app.n26.com/wl/wero/open-request?wero-uc=share&wero-url=https%3A%2F%2Fsh
 
 **Verified on iOS:** N26 opens directly with the correct recipient and amount prefilled.
 
+```mermaid
+flowchart TB
+    subgraph bank["Bank deep link"]
+        direction LR
+        B["https://app.n26.com/wl/wero/open-request<br/><i>payer's bank</i>"]
+        U["?wero-uc=share"]
+        subgraph wero["&wero-url= &nbsp;<i>(URL-encoded)</i>"]
+            direction LR
+            S["https://share.weropay.eu/p/1/s/"]
+            T["TOKEN<br/><i>recipient</i>"]
+            A["?a=500<br/><i>amount in cents</i>"]
+            C["&c=EUR<br/><i>currency</i>"]
+            S ~~~ T ~~~ A ~~~ C
+        end
+        B ~~~ U ~~~ wero
+    end
+```
+
 Apps shared by many banks (VR Banking App, Sparda, PSD) also need `&wero-bank-context=BIC`, the BIC of the payer's bank.
 
 ### 3. Bank links
