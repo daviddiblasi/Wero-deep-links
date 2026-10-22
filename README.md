@@ -1,7 +1,16 @@
-# Wero-deep-links
-# Wero Payment Deep Links – Prefilled Amount & Direct Banking App Launch
+# Wero Payment Deep Links – Direct Banking App Launch
 
-How to open a Wero payment straight in the payer's banking app, with recipient and amount prefilled, without bank connections or payment APIs.
+I wanted to have a pay with Wero button in my app so i did some research on how to open a Wero payment straight in the payer's banking app, with recipient and amount prefilled, without bank connections or payment APIs.
+
+```mermaid
+flowchart LR
+    subgraph without ["Without deep link"]
+        A1["Pay button"] --> B1["Wero website"] --> C1["Pick your bank"] --> D1["Banking app"]
+    end
+    subgraph with ["With deep link"]
+        A2["Pay button"] --> D2["Banking app (recipient and amount prefilled)"]
+    end
+```
 
 ### 1. The payment link
 
@@ -10,10 +19,10 @@ https://share.weropay.eu/p/1/s/TOKEN?a=500&c=EUR
 ```
 
 - `TOKEN` – the recipient's Wero share token
-- `a=500` – amount in cents (€5.00)
+- `a=500` – amount in cents
 - `c=EUR` – currency
 
-Opening this link shows Wero's bank picker first. To skip it, use a bank deep link.
+Opening this link shows Wero's bank picker webite first. To skip it, use a bank deep link.
 
 ### 2. Opening the bank app directly
 
